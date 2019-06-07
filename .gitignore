@@ -37,3 +37,4 @@ nosetests.xml
 
 # Temp files
 *.swp
+venv/*
