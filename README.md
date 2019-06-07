@@ -1,5 +1,4 @@
-# python_unittest_examples
-python_unittest_examples v.0.1.0
+# python_unittest_examples v.0.1.0
 
 ## What?
 A project for collecting various python unit testing tips and tricks.
