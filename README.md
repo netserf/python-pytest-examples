@@ -17,8 +17,18 @@ I need more practice with unit testing. It seemed like a good idea at the time.
 2. Simple failing test
 `$ pytest -v python_unittest_examples/ch1/test_two.py`
 
+3. Tests on Task namedtuple
+`$ pytest -v python_unittest_examples/ch1/test_three.py`
+
 ### Installation
-A python interpreter is required with pip and pytest installed.
+```
+$ pip3 install -U virtualenv
+$ python3 -m virtualenv venv
+$ source venv/bin/activate
+$ pip install pytest
+$ git clone git@github.com:netserf/python-unittest-examples.git
+```
+... Follow tests notes above
 
 ### Testing
 ```
