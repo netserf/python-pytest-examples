@@ -20,6 +20,8 @@ I need more practice with unit testing. It seemed like a good idea at the time.
 3. Tests on Task namedtuple
 `$ pytest -v python_unittest_examples/ch1/test_three.py`
 
+4. More tests on Task namedtuple
+`$$ pytest -v python_unittest_examples/ch1/test_four.py`
 ### Installation
 ```
 $ pip3 install -U virtualenv
