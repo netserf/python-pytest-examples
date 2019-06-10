@@ -32,6 +32,13 @@ I need more practice with unit testing. It seemed like a good idea at the time.
 7. Run tests matching an expression
 `$ pytest -v -k "asdict or defaults"`
 
+8. Exit after first error
+`$ pytest -x`
+
+9. Exit after x failures
+`$ pytest --maxfail=2`
+
+
 ### Installation
 ```
 $ pip3 install -U virtualenv
