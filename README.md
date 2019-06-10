@@ -21,7 +21,17 @@ I need more practice with unit testing. It seemed like a good idea at the time.
 `$ pytest -v python_unittest_examples/ch1/test_three.py`
 
 4. More tests on Task namedtuple
-`$$ pytest -v python_unittest_examples/ch1/test_four.py`
+`$ pytest -v python_unittest_examples/ch1/test_four.py`
+
+5. Run a single test
+`$ pytest -v python_unittest_examples/ch1/test_four.py::test_asdict`
+
+6. Collect tests, but don't run them
+`$ pytest --collect-only`
+
+7. Run tests matching an expression
+`$ pytest -v -k "asdict or defaults"`
+
 ### Installation
 ```
 $ pip3 install -U virtualenv
