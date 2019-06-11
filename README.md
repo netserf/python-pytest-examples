@@ -10,7 +10,7 @@ come.
 ## Why?
 I need more practice with unit testing. It seemed like a good idea at the time.
 
-### Usage
+### Pytest Usage
 1. Simple passing test
 `$ pytest -v python_unittest_examples/ch1/test_one.py`
 
@@ -38,6 +38,17 @@ I need more practice with unit testing. It seemed like a good idea at the time.
 9. Exit after x failures
 `$ pytest --maxfail=2`
 
+10. Allow `print()` statements to stdout
+`$ pytest -s`
+
+11. Run the last failed test
+`$ pytest --lf`
+
+12. Show local variables for failing tests
+`$ pytest -l`
+
+13. Show the slowest N number of tests
+`$ pytest --duration=N`
 
 ### Installation
 ```
