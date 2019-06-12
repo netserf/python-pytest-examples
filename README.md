@@ -1,5 +1,7 @@
 # python_unittest_examples v.0.1.1
 
+[![Build Status](https://travis-ci.org/netserf/python-unittest-examples.svg?branch=master)](https://travis-ci.org/netserf/python-unittest-examples)
+
 ## What?
 A project for collecting various python unit testing tips and tricks.
 
