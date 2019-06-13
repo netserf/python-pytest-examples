@@ -63,7 +63,13 @@ I need more practice with unit testing. It seemed like a good idea at the time.
 `$ pytest -v tests/ch2/tasks_proj/tests/unit`
 
 3. Test raising an exception
-...
+`$ pytest -v tests/ch2/tasks_proj/tests/func/test_api_exceptions.py::test_add_raises`
+e.g.
+```
+def test_add_raises():
+    with pytest.raises(TypeError):
+        tasks.add(task='not a Task object')
+```
 
 ### Installation
 ```
