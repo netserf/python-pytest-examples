@@ -13,6 +13,8 @@ come.
 I need more practice with unit testing. It seemed like a good idea at the time.
 
 ### Pytest Usage
+
+#### Chapter 1 - Getting Started with `pytest`
 1. Simple passing test
 `$ pytest -v python_unittest_examples/ch1/test_one.py`
 
@@ -51,6 +53,16 @@ I need more practice with unit testing. It seemed like a good idea at the time.
 
 13. Show the slowest N number of tests
 `$ pytest --duration=N`
+
+#### Chapter 2 - Using `assert` Statements
+
+1. Install the tasks package
+`$ pip install -e .`
+
+2. Try the unit tests for CH2
+`$ pytest -v tests/ch2/tasks_proj/tests/unit`
+
+TODO - Breaking right now. Fix it.
 
 ### Installation
 ```
