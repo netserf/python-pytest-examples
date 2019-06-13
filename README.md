@@ -64,11 +64,19 @@ I need more practice with unit testing. It seemed like a good idea at the time.
 
 3. Test raising an exception
 `$ pytest -v tests/ch2/tasks_proj/tests/func/test_api_exceptions.py::test_add_raises`
-```
-e.g.
+```e.g.
 def test_add_raises():
     with pytest.raises(TypeError):
         tasks.add(task='not a Task object')
+```
+4. Check parameters in a raised exception
+`$ pytest -v tests/ch2/tasks_proj/tests/func/test_api_exceptions.py::test_start_tasks_db_raises`
+```e.g.
+def test_start_tasks_db_raises():
+    with pytest.raises(ValueError) as excinfo:
+        tasks.start_task_db('some/great/path', 'mysql')
+    exception_msg = excinfo.value.args[0]
+    assert exception_msg == "db_type must be a 'tiny' or 'mongo'"
 ```
 
 ### Installation
