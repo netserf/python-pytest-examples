@@ -78,10 +78,16 @@ def test_start_tasks_db_raises():
     exception_msg = excinfo.value.args[0]
     assert exception_msg == "db_type must be a 'tiny' or 'mongo'"
 ```
+5. Markng test functions
+`$ `pytest -v -m 'smoke' tests/ch2/tasks_proj/tests/func/test_api_exceptions.py`
+```e.g. 
+``` @pytest.mark.smoke
+    def test_get_raises()
+        ...
+```
 
 ### Installation
-```
-$ pip3 install -U virtualenv
+``` $ pip3 install -U virtualenv
 $ python3 -m virtualenv venv
 $ source venv/bin/activate
 $ pip install pytest
