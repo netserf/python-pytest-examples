@@ -15,7 +15,7 @@ def test_add_returns_valid_id():
     assert isinstance(task_id, int)
 
 
-@pytest.mark.smoke
+# @pytest.mark.smoke
 def test_added_task_has_id_set():
     """Make sure the task_id field is set by tasks.add()."""
     # GIVEN an initialized tasks db

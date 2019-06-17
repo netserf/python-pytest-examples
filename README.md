@@ -16,19 +16,19 @@ I need more practice with unit testing. It seemed like a good idea at the time.
 
 #### Chapter 1 - Getting Started with `pytest`
 1. Simple passing test
-`$ pytest -v python_unittest_examples/ch1/test_one.py`
+`$ pytest -v tests/ch1/test_one.py`
 
 2. Simple failing test
-`$ pytest -v python_unittest_examples/ch1/test_two.py`
+`$ pytest -v tests/ch1/test_two.py`
 
 3. Tests on Task namedtuple
-`$ pytest -v python_unittest_examples/ch1/test_three.py`
+`$ pytest -v tests/ch1/test_three.py`
 
 4. More tests on Task namedtuple
-`$ pytest -v python_unittest_examples/ch1/test_four.py`
+`$ pytest -v tests/ch1/test_four.py`
 
 5. Run a single test
-`$ pytest -v python_unittest_examples/ch1/test_four.py::test_asdict`
+`$ pytest -v tests/ch1/test_four.py::test_asdict`
 
 6. Collect tests, but don't run them
 `$ pytest --collect-only`
@@ -62,11 +62,32 @@ I need more practice with unit testing. It seemed like a good idea at the time.
 2. Try the unit tests for CH2
 `$ pytest -v tests/ch2/tasks_proj/tests/unit`
 
-TODO - Breaking right now. Fix it.
+3. Test raising an exception
+`$ pytest -v tests/ch2/tasks_proj/tests/func/test_api_exceptions.py::test_add_raises`
+```e.g.
+def test_add_raises():
+    with pytest.raises(TypeError):
+        tasks.add(task='not a Task object')
+```
+4. Check parameters in a raised exception
+`$ pytest -v tests/ch2/tasks_proj/tests/func/test_api_exceptions.py::test_start_tasks_db_raises`
+```e.g.
+def test_start_tasks_db_raises():
+    with pytest.raises(ValueError) as excinfo:
+        tasks.start_task_db('some/great/path', 'mysql')
+    exception_msg = excinfo.value.args[0]
+    assert exception_msg == "db_type must be a 'tiny' or 'mongo'"
+```
+5. Markng test functions
+`$ `pytest -v -m 'smoke' tests/ch2/tasks_proj/tests/func/test_api_exceptions.py`
+```e.g. 
+``` @pytest.mark.smoke
+    def test_get_raises()
+        ...
+```
 
 ### Installation
-```
-$ pip3 install -U virtualenv
+``` $ pip3 install -U virtualenv
 $ python3 -m virtualenv venv
 $ source venv/bin/activate
 $ pip install pytest
