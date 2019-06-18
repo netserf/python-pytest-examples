@@ -79,12 +79,29 @@ def test_start_tasks_db_raises():
     assert exception_msg == "db_type must be a 'tiny' or 'mongo'"
 ```
 5. Markng test functions
-`$ `pytest -v -m 'smoke' tests/ch2/tasks_proj/tests/func/test_api_exceptions.py`
+`$ pytest -v -m 'smoke' tests/ch2/tasks_proj/tests/func/test_api_exceptions.py`
 ```e.g. 
-``` @pytest.mark.smoke
-    def test_get_raises()
-        ...
+@pytest.mark.smoke
+def test_get_raises()
+    ...
 ```
+6. Marking tests to skip
+`$ pytest -v tests/ch2/tasks_proj/tests/func/test_unique_id_2.py`
+```e.g.
+@pytest.mark.skip(reason='Fix this one')
+def test_unique_id():
+    ...
+```
+7. Conditionally marking tests to skip
+`$ pytest -v tests/ch2/tasks_proj/tests/func/test_unique_id_3.py`
+Any valid pytest conditional statement can be used.
+```e.g.
+@pytest.mark.skipif(tasks.__version__ < '0.2.0',
+                    reason='not supported until version 0.2.0')
+def test_unique_id_1():
+    ...
+```
+
 
 ### Installation
 ``` $ pip3 install -U virtualenv
