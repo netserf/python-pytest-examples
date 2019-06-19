@@ -107,6 +107,23 @@ def test_unique_id_1():
 @pytest.mark.xfail(tasks.__version__ < '0.2.0',
                    reason='not supported until version 0.2.0')
 def test_unique_id_1():
+```
+9. Group tests in a single test class
+`$ pytest -v tests/ch2/tasks_proj/tests/func/test_api_exceptions.py::TestUpdate`
+10. Parameterized Testing
+`$ pytest -v tests/ch2/tasks_proj/tests/func/test_add_variety.py::test_add_3`
+- 1st arg is a string to describe the parameters
+- 2nd arg is a list of tuples where each tuple is a group of parameters for the test
+```
+@pytest.mark.parametrize('summary, owner, done',
+                         [('sleep', None, False),
+                          ('wake', 'brian', False),
+                          ('breathe', 'BRIAN', True),
+                          ('eat eggs', 'BrIaN', False),
+                          ])
+def test_add_3(summary, owner, done):
+    ...
+```
 
 
 ### Installation
