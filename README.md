@@ -94,13 +94,19 @@ def test_unique_id():
 ```
 7. Conditionally marking tests to skip
 `$ pytest -v tests/ch2/tasks_proj/tests/func/test_unique_id_3.py`
-Any valid pytest conditional statement can be used.
+Any valid python conditional statement can be used.
 ```e.g.
 @pytest.mark.skipif(tasks.__version__ < '0.2.0',
                     reason='not supported until version 0.2.0')
 def test_unique_id_1():
     ...
 ```
+8. Mark tests as expected to fail
+`$ pytest -v tests/ch2/tasks_proj/tests/func/test_unique_id_4.py`
+```e.g.
+@pytest.mark.xfail(tasks.__version__ < '0.2.0',
+                   reason='not supported until version 0.2.0')
+def test_unique_id_1():
 
 
 ### Installation
