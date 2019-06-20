@@ -149,6 +149,17 @@ task_ids = ['Task({},{},{})'.format(t.summary, t.owner, t.done)
 def test_add_5(task):
     ...
 ```
+13. Parameterized testing - grouping at the class-level
+`$ pytest -v tests/ch2/tasks_proj/tests/func/test_add_variety.py::TestAdd`
+- grouping the parameters at the class-level sends the same data set to all
+  tests in the class
+- still using `tasks_to_try` and `task_ids` from previous examples
+```e.g.
+@pytest.mark.parametrize('task', tasks_to_try, ids=task_ids)
+class TestAdd():
+    ...
+```
+
 
 
 ### Installation
