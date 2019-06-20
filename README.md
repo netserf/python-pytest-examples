@@ -1,4 +1,4 @@
-# python_unittest_examples v.0.1.1
+# python_unittest_examples v.0.1.2
 
 [![Build Status](https://travis-ci.org/netserf/python-unittest-examples.svg?branch=master)](https://travis-ci.org/netserf/python-unittest-examples)
 
@@ -110,7 +110,7 @@ def test_unique_id_1():
 ```
 9. Group tests in a single test class
 `$ pytest -v tests/ch2/tasks_proj/tests/func/test_api_exceptions.py::TestUpdate`
-10. Parameterized Testing
+10. Parameterized testing
 `$ pytest -v tests/ch2/tasks_proj/tests/func/test_add_variety.py::test_add_3`
 - 1st arg is a string to describe the parameters
 - 2nd arg is a list of tuples where each tuple is a group of parameters for the test
@@ -124,6 +124,42 @@ def test_unique_id_1():
 def test_add_3(summary, owner, done):
     ...
 ```
+11. Parameterized testing - cleaner option
+`$ pytest -v tests/ch2/tasks_proj/tests/func/test_add_variety.py::test_add_4`
+- move the parameters into a tuple outside the function
+```e.g.
+tasks_to_try = (Task('sleep', done=True),
+                Task('wake', 'brian'),
+                Task('wake', 'brian'),
+                Task('breathe', 'BRIAN', True),
+                Task('exercise', 'BrIaN', False))
+
+@pytest.mark.parametrize('task', tasks_to_try)
+def test_add_4(task):
+    ...
+```
+12. Parameterized testing - clean and easier to read output
+`$ pytest -v tests/ch2/tasks_proj/tests/func/test_add_variety.py::test_add_5`
+- still using `tasks_to_try` tuple from previous example
+```e.g.
+task_ids = ['Task({},{},{})'.format(t.summary, t.owner, t.done)
+            for t in tasks_to_try]
+
+@pytest.mark.parametrize('task', tasks_to_try, ids=task_ids)
+def test_add_5(task):
+    ...
+```
+13. Parameterized testing - grouping at the class-level
+`$ pytest -v tests/ch2/tasks_proj/tests/func/test_add_variety.py::TestAdd`
+- grouping the parameters at the class-level sends the same data set to all
+  tests in the class
+- still using `tasks_to_try` and `task_ids` from previous examples
+```e.g.
+@pytest.mark.parametrize('task', tasks_to_try, ids=task_ids)
+class TestAdd():
+    ...
+```
+
 
 
 ### Installation
