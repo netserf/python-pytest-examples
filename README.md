@@ -1,4 +1,4 @@
-# python_unittest_examples v.0.1.1
+# python_unittest_examples v.0.1.2
 
 [![Build Status](https://travis-ci.org/netserf/python-unittest-examples.svg?branch=master)](https://travis-ci.org/netserf/python-unittest-examples)
 
