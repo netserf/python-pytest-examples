@@ -138,6 +138,17 @@ tasks_to_try = (Task('sleep', done=True),
 def test_add_4(task):
     ...
 ```
+12. Parameterized testing - clean and easier to read output
+`$ pytest -v tests/ch2/tasks_proj/tests/func/test_add_variety.py::test_add_5`
+- still using `tasks_to_try` tuple from previous example
+```e.g.
+task_ids = ['Task({},{},{})'.format(t.summary, t.owner, t.done)
+            for t in tasks_to_try]
+
+@pytest.mark.parametrize('task', tasks_to_try, ids=task_ids)
+def test_add_5(task):
+    ...
+```
 
 
 ### Installation
