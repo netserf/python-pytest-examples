@@ -159,6 +159,9 @@ def test_add_5(task):
 class TestAdd():
     ...
 ```
+#### Chapter 3 - pytest fixtures
+1. Simple fixture example
+`$ pytest -v tests/ch3/test_fixtures.py::test_some_data`
 
 
 
