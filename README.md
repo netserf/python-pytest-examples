@@ -162,8 +162,33 @@ class TestAdd():
 #### Chapter 3 - pytest fixtures
 1. Simple fixture example
 `$ pytest -v tests/ch3/test_fixtures.py::test_some_data`
+- fixtures provide some data for tests to work with
+2. Sharing fixtures in `conftest.py`
+- put common fixtures in `conftest.py` to share among tests - no imports required
+- typically placed at the root of the test directory 
+3. Special fixture `tmpdir`
+- `pytest` comes with its own special `tmpdir` fixture which can be used as a
+  temporary directory resource
+```e.g.
+@pytest.fixture()
+def tasks_db(tmpdir):
+    ...
+```
+4. Fixtures for setup and teardown
+- setup and teardown is possible using `yield`
+- once `yield` is called within the fixture, control passes to the test
+- it is also possible to pass data to the test with `yield`
+```e.g.
+    # Setup : start db
+    tasks.start_tasks_db(str(tmpdir), 'tiny')
 
+    yield  # this is where the testing happens
 
+    # Teardown : stop db
+    tasks.stop_tasks_db()
+```
+5. Tracing fixture execution with `--setup-show` 
+`$ pytest --setup-show tests/ch3/a/func/test_add.py -k valid_id`
 
 ### Installation
 ``` $ pip3 install -U virtualenv
