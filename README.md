@@ -169,8 +169,10 @@ class TestAdd():
 `$ pytest -v tests/ch3/test_fixtures.py::test_some_data`
 - fixtures provide some data for tests to work with
 2. Sharing fixtures in `conftest.py`
-- put common fixtures in `conftest.py` to share among tests - no imports required
-- typically placed at the root of the test directory 
+- put common fixtures in `conftest.py` to share across tests
+- no imports required
+- typically placed at the root of the test directory
+- can be placed deeper to localize the fixture scope
 3. Special fixture `tmpdir`
 - `pytest` comes with its own special `tmpdir` fixture which can be used as a
   temporary directory resource
