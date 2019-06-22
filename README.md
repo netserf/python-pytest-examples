@@ -3,16 +3,21 @@
 [![Build Status](https://travis-ci.org/netserf/python-unittest-examples.svg?branch=master)](https://travis-ci.org/netserf/python-unittest-examples)
 
 ## What?
-A project for collecting various python unit testing tips and tricks.
+A project for collecting notes on the functionality of `pytest`. The goal is to
+provide working examples that you can run and observe to understand the
+`pytest` behaviour. It is not intended to as complete documentation on each
+feature. If you need this I recommend going to the primary sources that I've 
+noted in each section.
 
-The first module will be based on notes compiled from Python Testing with pytest
-written by Brian Okken. Depending on how this goes there may be more modules to
-come.
+The first section will be based on notes compiled from Python Testing with
+pytest written by Brian Okken. Depending on how this goes there may be more 
+sections to come.
 
 ## Why?
-I need more practice with unit testing. It seemed like a good idea at the time.
+I need more practice with python testing and I hope others can benefit from my
+notes.
 
-### Pytest Usage
+### Notes - Python Testing with pytest (author: by Brian Okken)
 
 #### Chapter 1 - Getting Started with `pytest`
 1. Simple passing test
