@@ -197,12 +197,32 @@ def tasks_db(tmpdir):
 5. Tracing fixture execution with `--setup-show` 
 `$ pytest --setup-show tests/ch3/a/func/test_add.py -k valid_id`
 
+6. Fixtures for passing test data
+`$ pytest -v tests/ch3/a/func/test_add.py::test_add_increases_count`
+- uses `db_with_3_tasks` fixture containing some pre-configured data
+- fixture found in `tests/ch3/a/conftest.py`
+```e.g.
+def test_add_increases_count(db_with_3_tasks):
+    ...
+```
+7. Specifying fixture scope
+`$ pytest -v --setup-show tests/ch3/test_scope.py`
+- test fixtures can be configured with a scope of `function` (default), `class`,
+  `module`, or `session`
+```e.g.
+@pytest.fixture(scope='function')
+def func_scope():
+    ...
+```
+
 ### Installation
-``` $ pip3 install -U virtualenv
+```
+$ pip3 install -U virtualenv
 $ python3 -m virtualenv venv
 $ source venv/bin/activate
 $ pip install pytest
-$ git clone git@github.com:netserf/python-unittest-examples.git
+$ git clone git@github.com:netserf/python-pytest-examples.git
+$ pip install -e .
 ```
 ... Follow tests notes above
 
