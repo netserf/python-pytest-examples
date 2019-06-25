@@ -1,6 +1,6 @@
 # python_unittest_examples v.0.1.2
 
-[![Build Status](https://travis-ci.org/netserf/python-unittest-examples.svg?branch=master)](https://travis-ci.org/netserf/python-unittest-examples)
+[![Build Status](https://travis-ci.org/netserf/python-pytest-examples.svg?branch=master)](https://travis-ci.org/netserf/python-pytest-examples)
 
 ## What?
 A project for collecting notes on the functionality of `pytest`. The goal is to
@@ -224,7 +224,28 @@ def func_scope():
 class TestSomething():
     ...
 ```
+9. Using `autouse` fixtures
+`$ pytest -v -s tests/ch3/test_autouse.py`
+- `autouse` may be helpful in timing/debugging context, but opt for named
+  fixtures when possible
+```e.g.
+@pytest.fixture(autouse=True, scope='session')
+def footer_session_scope():
+    ...
+```
+10. Aliasing fixtures
+`$ pytest --setup-show tests/ch3/test_rename_fixture.py`
+- useful if the function name is long (but probably better to refactor)
+```e.g.
+@pytest.fixture(name='lue')
+def ultimate_answer_to_life_the_universe_and_everything():
+    ...
+```
+11. To see a list of fixtures including ones in `conftest.py`
+`$ pytest --fixtures tests/ch3/b/func/test_add.py`
+ 
 
+``` 
 ### Installation
 ```
 $ pip3 install -U virtualenv
