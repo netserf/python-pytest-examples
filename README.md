@@ -1,6 +1,6 @@
 # python_unittest_examples v.0.1.2
 
-[![Build Status](https://travis-ci.org/netserf/python-unittest-examples.svg?branch=master)](https://travis-ci.org/netserf/python-unittest-examples)
+[![Build Status](https://travis-ci.org/netserf/python-pytest-examples.svg?branch=master)](https://travis-ci.org/netserf/python-pytest-examples)
 
 ## What?
 A project for collecting notes on the functionality of `pytest`. The goal is to
