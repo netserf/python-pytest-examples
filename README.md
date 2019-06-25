@@ -224,6 +224,15 @@ def func_scope():
 class TestSomething():
     ...
 ```
+9. Using `autouse` fixtures
+`$ pytest -v -s tests/ch3/test_autouse.py`
+- `autouse` may be helpful in timing/debugging context, but opt for named
+  fixtures when possible
+```e.g.
+@pytest.fixture(autouse=True, scope='session')
+def footer_session_scope():
+    ...
+```
 
 ### Installation
 ```
