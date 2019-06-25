@@ -214,6 +214,16 @@ def test_add_increases_count(db_with_3_tasks):
 def func_scope():
     ...
 ```
+8. Specifying fixtures with `usefixtures`
+`$ pytest -v tests/ch3/test_scope.py::TestSomething`
+- mark a test or class to use a fixture with `@pytest.mark.usefixtures()
+- not useful at the function/method level
+- typically used at the class-level
+```e.g.
+@pytest.mark.usefixtures('class_scope')
+class TestSomething():
+    ...
+```
 
 ### Installation
 ```
