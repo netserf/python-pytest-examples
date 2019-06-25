@@ -233,7 +233,19 @@ class TestSomething():
 def footer_session_scope():
     ...
 ```
+10. Aliasing fixtures
+`$ pytest --setup-show tests/ch3/test_rename_fixture.py`
+- useful if the function name is long (but probably better to refactor)
+```e.g.
+@pytest.fixture(name='lue')
+def ultimate_answer_to_life_the_universe_and_everything():
+    ...
+```
+11. To see a list of fixtures including ones in `conftest.py`
+`$ pytest --fixtures tests/ch3/b/func/test_add.py`
+ 
 
+``` 
 ### Installation
 ```
 $ pip3 install -U virtualenv
