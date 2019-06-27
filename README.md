@@ -244,12 +244,28 @@ def ultimate_answer_to_life_the_universe_and_everything():
 11. To see a list of fixtures including ones in `conftest.py`
 `$ pytest --fixtures tests/ch3/b/func/test_add.py`
 12. Parameterizing fixtures
-`$ pytest -v tests/ch3/b/func/test_add_variety2.py`
+`$ pytest -v tests/ch3/b/func/test_add_variety2.py::test_add_a`
 - you can also parameterize fitxures, not just tests
 ```e.g.
 @pytest.fixture(params=tasks_to_try)
 def a_task(request):
+    ...
+
+def test_add_a(tasks_db, a_task):
+    ...
 ```
+13. Add cleaner output to parameterize fixtures
+`$ pytest -v tests/ch3/b/func/test_add_variety2.py::test_add_b`
+```e.g.
+@pytest.fixture(params=tasks_to_try, ids=task_ids)
+def b_task(request):
+    ...
+
+def test_add_b(tasks_db, b_task):
+    ...
+```
+
+ 
 
  
 
