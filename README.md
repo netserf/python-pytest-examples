@@ -1,4 +1,4 @@
-# python_unittest_examples v.0.1.2
+# python_unittest_examples v.0.1.3
 
 [![Build Status](https://travis-ci.org/netserf/python-pytest-examples.svg?branch=master)](https://travis-ci.org/netserf/python-pytest-examples)
 
@@ -264,8 +264,12 @@ def b_task(request):
 def test_add_b(tasks_db, b_task):
     ...
 ```
-
- 
+14. Creating parameter restrictions for fixtures
+```e.g.
+@pytest.fixture(scope='session', params=['tiny', 'mongo'])
+def tasks_db_session(tmpdir_factory, request):
+    ...
+```
 
  
 
