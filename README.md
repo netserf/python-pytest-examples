@@ -1,4 +1,4 @@
-# Python Pytest Examples v.0.1.3
+# Python `pytest` Examples v.0.1.3
 
 [![Build Status](https://travis-ci.org/netserf/python-pytest-examples.svg?branch=master)](https://travis-ci.org/netserf/python-pytest-examples)
 
