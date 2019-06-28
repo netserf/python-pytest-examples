@@ -264,8 +264,12 @@ def b_task(request):
 def test_add_b(tasks_db, b_task):
     ...
 ```
-
- 
+14. Creating parameter restrictions for fixtures
+```e.g.
+@pytest.fixture(scope='session', params=['tiny', 'mongo'])
+def tasks_db_session(tmpdir_factory, request):
+    ...
+```
 
  
 
