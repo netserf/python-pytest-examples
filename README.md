@@ -1,4 +1,4 @@
-# python_unittest_examples v.0.1.3
+# Python `pytest` Examples
 
 [![Build Status](https://travis-ci.org/netserf/python-pytest-examples.svg?branch=master)](https://travis-ci.org/netserf/python-pytest-examples)
 
@@ -266,9 +266,8 @@ def tasks_db_session(tmpdir_factory, request):
 ```
 
 #### Chapter 4 - Builtin Fixtures
- 
+ 1. ...
 
-``` 
 ### Installation
 ```
 $ pip3 install -U virtualenv
