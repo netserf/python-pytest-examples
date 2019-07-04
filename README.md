@@ -26,37 +26,31 @@ notes.
 2. Simple failing test
 `$ pytest -v tests/ch1/test_two.py`
 
-3. Tests on Task namedtuple
-`$ pytest -v tests/ch1/test_three.py`
-
-4. More tests on Task namedtuple
-`$ pytest -v tests/ch1/test_four.py`
-
-5. Run a single test
+3. Run a single test
 `$ pytest -v tests/ch1/test_four.py::test_asdict`
 
-6. Collect tests, but don't run them
+4. Collect tests, but don't run them
 `$ pytest --collect-only`
 
-7. Run tests matching an expression
+5. Run tests matching an expression
 `$ pytest -v -k "asdict or defaults"`
 
-8. Exit after first error
+6. Exit after first error
 `$ pytest -x`
 
-9. Exit after x failures
+7. Exit after x failures
 `$ pytest --maxfail=2`
 
-10. Allow `print()` statements to stdout
+8. Allow `print()` statements to stdout
 `$ pytest -s`
 
-11. Run the last failed test
+9. Run the last failed test
 `$ pytest --lf`
 
-12. Show local variables for failing tests
+10. Show local variables for failing tests
 `$ pytest -l`
 
-13. Show the slowest N number of tests
+11. Show the slowest N number of tests
 `$ pytest --duration=N`
 
 #### Chapter 2 - Using `assert` Statements
@@ -272,7 +266,36 @@ def tasks_db_session(tmpdir_factory, request):
 ```
 
 #### Chapter 4 - Builtin Fixtures
- 1. ...
+
+1. Using `tmpdir` builtin fixture
+`$ pytest -v tests/ch4/test_tmpdir.py::test_tmpdir`
+- useful for tasks that read, write, or modify files
+- `tmpdir` for function scope
+```e.g.
+def test_tmpdir(tmpdir):
+    a_file = tmpdir.join('something.txt')
+    a_sub_dir = tmpdir.mkdir('anything')
+    another_file = a_sub_dir.join('something_else.txt')
+    a_file.write('contents may settle during shipping')
+    another_file.write('something different')
+    assert a_file.read() == 'contents may settle during shipping'
+    assert another_file.read() == 'something different'
+```
+
+2. Using `tmpdir_factory` builtin fixture
+`$ pytest -v -s tests/ch4/test_tmpdir.py::test_tmpdir_factory`
+- `tmpdir_factory` for class, module, and session scope
+```e.g.
+def test_tmpdir_factory(tmpdir_factory):
+    a_dir = tmpdir_factory.mktemp('mydir')
+    a_file = a_dir.join('something.txt')
+    a_sub_dir = a_dir.mkdir('anything')
+    another_file = a_sub_dir.join('something_else.txt')
+    a_file.write('contents may settle during shipping')
+    another_file.write('something different')
+    assert a_file.read() == 'contents may settle during shipping'
+    assert another_file.read() == 'something different'
+```
 
 ### Installation
 ```
