@@ -266,7 +266,36 @@ def tasks_db_session(tmpdir_factory, request):
 ```
 
 #### Chapter 4 - Builtin Fixtures
- 1. ...
+
+1. Using `tmpdir` builtin fixture
+`$ pytest -v tests/ch4/test_tmpdir.py::test_tmpdir`
+- useful for tasks that read, write, or modify files
+- `tmpdir` for function scope
+```e.g.
+def test_tmpdir(tmpdir):
+    a_file = tmpdir.join('something.txt')
+    a_sub_dir = tmpdir.mkdir('anything')
+    another_file = a_sub_dir.join('something_else.txt')
+    a_file.write('contents may settle during shipping')
+    another_file.write('something different')
+    assert a_file.read() == 'contents may settle during shipping'
+    assert another_file.read() == 'something different'
+```
+
+2. Using `tmpdir_factory` builtin fixture
+`$ pytest -v -s tests/ch4/test_tmpdir.py::test_tmpdir_factory`
+- `tmpdir_factory` for class, module, and session scope
+```e.g.
+def test_tmpdir_factory(tmpdir_factory):
+    a_dir = tmpdir_factory.mktemp('mydir')
+    a_file = a_dir.join('something.txt')
+    a_sub_dir = a_dir.mkdir('anything')
+    another_file = a_sub_dir.join('something_else.txt')
+    a_file.write('contents may settle during shipping')
+    another_file.write('something different')
+    assert a_file.read() == 'contents may settle during shipping'
+    assert another_file.read() == 'something different'
+```
 
 ### Installation
 ```
