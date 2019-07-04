@@ -324,6 +324,24 @@ def test_option(pytestconfig):
     print('"myopt" set to:', pytestconfig.getoption('myopt'))
 ```
 
+4. Using `cache` builtin fixture
+- The `cache` fixture stores information from one test session which can be
+  retrieved in the next test session
+- Some options for using / accessing the cache:
+```
+$ pytest --help
+...
+  --lf, --last-failed   rerun only the tests that failed at the last run (or
+                        all if none failed)
+  --ff, --failed-first  run all tests but run the last failures first. This
+                        may re-order tests and thus lead to repeated fixture  
+  --cache-show=[CACHESHOW]
+                        show cache contents, don't perform collection or
+  --cache-clear         remove all cache contents at start of test run.
+                        `-o xfail_strict=True -o cache_dir=cache`.
+...
+```
+
 ### Installation
 ```
 $ pip3 install -U virtualenv
