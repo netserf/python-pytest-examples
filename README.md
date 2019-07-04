@@ -297,6 +297,33 @@ def test_tmpdir_factory(tmpdir_factory):
     assert another_file.read() == 'something different'
 ```
 
+3. Using `pytestconfig` builtin fixture
+```$ pytest tests/ch4/pytestconfig --help | egrep -A 3 ^custom
+custom options:
+  --myopt               some boolean option
+  --foo=FOO             foo: bar or baz
+```
+- a pytest hook can be used to add custom options in 
+  `tests/ch4/pytestconfig/conftest.py`:
+def pytest_addoption(parser):
+    parser.addoption("--myopt", action="store_true",
+                     help="some boolean option")
+    parser.addoption("--foo", action="store", default="bar",
+                     help="foo: bar or baz")
+```
+- these options can be accessed in tests:
+```
+$ pytest -s -q --myopt --foo baz tests/ch4/pytestconfig/test_config.py::test_option
+"foo" set to: baz
+"myopt" set to: True
+```
+- test code found in `tests/ch4/pytestconfig/test_config.py`
+``` 
+def test_option(pytestconfig):
+    print('"foo" set to:', pytestconfig.getoption('foo'))
+    print('"myopt" set to:', pytestconfig.getoption('myopt'))
+```
+
 ### Installation
 ```
 $ pip3 install -U virtualenv
