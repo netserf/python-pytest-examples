@@ -271,7 +271,8 @@ def tasks_db_session(tmpdir_factory, request):
 `$ pytest -v tests/ch4/test_tmpdir.py::test_tmpdir`
 - useful for tasks that read, write, or modify files
 - `tmpdir` for function scope
-```e.g.
+```
+e.g.
 def test_tmpdir(tmpdir):
     a_file = tmpdir.join('something.txt')
     a_sub_dir = tmpdir.mkdir('anything')
@@ -283,9 +284,11 @@ def test_tmpdir(tmpdir):
 ```
 
 2. Using `tmpdir_factory` builtin fixture
+
 `$ pytest -v -s tests/ch4/test_tmpdir.py::test_tmpdir_factory`
 - `tmpdir_factory` for class, module, and session scope
-```e.g.
+```
+e.g.
 def test_tmpdir_factory(tmpdir_factory):
     a_dir = tmpdir_factory.mktemp('mydir')
     a_file = a_dir.join('something.txt')
@@ -298,13 +301,15 @@ def test_tmpdir_factory(tmpdir_factory):
 ```
 
 3. Using `pytestconfig` builtin fixture
-```$ pytest tests/ch4/pytestconfig --help | egrep -A 3 ^custom
+```
+$ pytest tests/ch4/pytestconfig --help | egrep -A 3 ^custom
 custom options:
   --myopt               some boolean option
   --foo=FOO             foo: bar or baz
 ```
 - a pytest hook can be used to add custom options in 
-  `tests/ch4/pytestconfig/conftest.py`:
+- e.g. `tests/ch4/pytestconfig/conftest.py`:
+```
 def pytest_addoption(parser):
     parser.addoption("--myopt", action="store_true",
                      help="some boolean option")
@@ -322,6 +327,24 @@ $ pytest -s -q --myopt --foo baz tests/ch4/pytestconfig/test_config.py::test_opt
 def test_option(pytestconfig):
     print('"foo" set to:', pytestconfig.getoption('foo'))
     print('"myopt" set to:', pytestconfig.getoption('myopt'))
+```
+
+4. Using `cache` builtin fixture
+- The `cache` fixture stores information from one test session which can be
+  retrieved in the next test session
+- Some options for using / accessing the cache:
+```
+$ pytest --help
+...
+  --lf, --last-failed   rerun only the tests that failed at the last run (or
+                        all if none failed)
+  --ff, --failed-first  run all tests but run the last failures first. This
+                        may re-order tests and thus lead to repeated fixture  
+  --cache-show=[CACHESHOW]
+                        show cache contents, don't perform collection or
+  --cache-clear         remove all cache contents at start of test run.
+                        `-o xfail_strict=True -o cache_dir=cache`.
+...
 ```
 
 ### Installation
