@@ -328,7 +328,7 @@ def tasks_db_session(tmpdir_factory, request):
 
 #### Chapter 4 - Builtin Fixtures
 
-1. Using `tmpdir` builtin fixture
+1. Using the `tmpdir` builtin fixture
 
 `$ pytest -v tests/ch4/test_tmpdir.py::test_tmpdir`
 
@@ -346,7 +346,7 @@ def test_tmpdir(tmpdir):
     assert another_file.read() == 'something different'
 ```
 
-2. Using `tmpdir_factory` builtin fixture
+2. Using the `tmpdir_factory` builtin fixture
 
 `$ pytest -v -s tests/ch4/test_tmpdir.py::test_tmpdir_factory`
 
@@ -364,7 +364,7 @@ def test_tmpdir_factory(tmpdir_factory):
     assert another_file.read() == 'something different'
 ```
 
-3. Using `pytestconfig` builtin fixture
+3. Using the `pytestconfig` builtin fixture
 ```
 $ pytest tests/ch4/pytestconfig --help | egrep -A 3 ^custom
 custom options:
@@ -393,7 +393,7 @@ def test_option(pytestconfig):
     print('"myopt" set to:', pytestconfig.getoption('myopt'))
 ```
 
-4. Using `cache` builtin fixture
+4. Using the `cache` builtin fixture
 - The `cache` fixture stores information from one test session which can be
   retrieved in the next test session
 - Some options for using / accessing the cache:
@@ -411,10 +411,11 @@ $ pytest --help
 ...
 ```
 
-5. Using `capsys` builtin fixture
+5. Using the `capsys` builtin fixture
 - Allows you to retrieve stdout and stderr for testing
+- `with capsys.disabled()` block can be used to turn off capture process
 
-`$ pytest -v tests/ch4/cap/test_capsys.py::test_greeting`
+`$ pytest -v -k 'test_greeting or test_yikes or test_capsys_disabled' tests/ch4/cap/test_capsys.py`
 
 ```
 def test_greeting(capsys):
@@ -422,7 +423,20 @@ def test_greeting(capsys):
     out, err = capsys.readouterr()
     assert out == 'Hi, Earthling\n'
     assert err == ''
+
+def test_yikes(capsys):
+    yikes('Out of coffee!')
+    out, err = capsys.readouterr()
+    assert out == ''
+    assert 'Out of coffee!' in err
+
+def test_capsys_disabled(capsys):
+    with capsys.disabled():
+        print('\nalways print this')
+    print('normal print, usually captured')
 ```
+
+6. Using the `monkeypatch` builtin fixture
 
 ### Installation
 ```
