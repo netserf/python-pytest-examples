@@ -437,6 +437,22 @@ def test_capsys_disabled(capsys):
 ```
 
 6. Using the `monkeypatch` builtin fixture
+- replace dependencies with objects or functions that are more convenient for testing
+- `monkeypatch` provides the following functions:
+- `setattr()`, `delattr()`, `setitem()`, `delitem()`, `setenv()`, `delenv()`, `syspath_prepend()`
+
+`$ pytest -v tests/ch4/monkey/test_cheese.py::test_def_prefs_change_home`
+- make a temporary HOME directory for writing config file, rather than writing
+  to the actual HOME directory
+```
+def test_def_prefs_change_home(tmpdir, monkeypatch):
+    monkeypatch.setenv('HOME', tmpdir.mkdir('home'))
+    cheese.write_default_cheese_preferences()
+    expected = cheese._default_prefs
+    actual = cheese.read_cheese_preferences()
+    assert expected == actual
+```
+
 
 ### Installation
 ```
