@@ -411,6 +411,19 @@ $ pytest --help
 ...
 ```
 
+5. Using `capsys` builtin fixture
+- Allows you to retrieve stdout and stderr for testing
+
+`$ pytest -v tests/ch4/cap/test_capsys.py::test_greeting`
+
+```
+def test_greeting(capsys):
+    greeting('Earthling')
+    out, err = capsys.readouterr()
+    assert out == 'Hi, Earthling\n'
+    assert err == ''
+```
+
 ### Installation
 ```
 $ pip3 install -U virtualenv
