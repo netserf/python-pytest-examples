@@ -453,6 +453,21 @@ def test_def_prefs_change_home(tmpdir, monkeypatch):
     assert expected == actual
 ```
 
+7. Using the `doctest_namespace` builtin fixture
+
+`$ pytest -v --doctest-modules --tb=short tests/ch4/dt/3/unnecessary_math.py`
+
+- pytest will perform docstring embedded tests with the `--doctest-module` option
+- docstring test import statements only have a function scope, but the `doctest_namespace`
+  builtin fixture fixes this - easiest to set in a fixture with `autouse=True`
+```
+import pytest
+import unnecessary_math
+
+@pytest.fixture(autouse=True)
+def add_um(doctest_namespace):
+    doctest_namespace['um'] = unnecessary_math
+```
 
 ### Installation
 ```
