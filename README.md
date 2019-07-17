@@ -495,6 +495,13 @@ def test_lame_function_2():
     assert str(w.message) == 'Please stop using this'
 ```
 
+#### Chapter 5 - Plugins
+
+- Documentation for pytest plugins:
+  - https://docs.pytest.org/en/latest/plugins.html
+  - https://pypy.python.org
+  - https://github.com/pytest-dev
+
 
 ### Installation
 ```
