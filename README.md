@@ -498,9 +498,9 @@ def test_lame_function_2():
 #### Chapter 5 - Plugins
 
 - Documentation for pytest plugins:
-  https://docs.pytest.org/en/latest/plugins.html
-  https://pypy.python.org
-  https://github.com/pytest-dev
+  - https://docs.pytest.org/en/latest/plugins.html
+  - https://pypy.python.org
+  - https://github.com/pytest-dev
 
 
 ### Installation
