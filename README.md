@@ -1,25 +1,43 @@
-# Python `pytest` Examples
+# 1. Python `pytest` Examples
 
 [![Build Status](https://travis-ci.org/netserf/python-pytest-examples.svg?branch=master)](https://travis-ci.org/netserf/python-pytest-examples)
 
-## What?
+!-- TOC -->
+[1. Python `pytest` Examples](#1-python-pytest-examples)
+- [1.1. What?](#11-what)
+- [1.2. Why?](#12-why)
+    - [1.2.1. Notes - Python Testing with pytest (author: Brian Okken)](#121-notes---python-testing-with-pytest-author-brian-okken)
+        - [1.2.1.1. Chapter 1 - Getting Started with `pytest`](#1211-chapter-1---getting-started-with-pytest)
+        - [1.2.1.2. Chapter 2 - Using `assert` Statements](#1212-chapter-2---using-assert-statements)
+        - [1.2.1.3. Chapter 3 - pytest fixtures](#1213-chapter-3---pytest-fixtures)
+        - [1.2.1.4. Chapter 4 - Builtin Fixtures](#1214-chapter-4---builtin-fixtures)
+        - [1.2.1.5. Chapter 5 - Plugins](#1215-chapter-5---plugins)
+        - [1.2.2. Installation](#122-installation)
+        - [1.2.3. Testing](#123-testing)
+- [1.3. Requirements](#13-requirements)
+- [1.4. Future Improvements](#14-future-improvements)
+- [1.5. Licence](#15-licence)
+- [1.6. Authors](#16-authors)
+<!-- /TOC -->
+
+## 1.1. What?
 A project for collecting notes on the functionality of `pytest`. The goal is to
-provide working examples that you can run and observe to understand the
-`pytest` behaviour. It is not intended to as complete documentation on each
-feature. If you need this I recommend going to the primary sources that I've 
-noted in each section.
+provide working examples that you can run and observe to understand the `pytest`
+behaviour. It is not intended to as complete documentation on each feature. If
+you need this I recommend going to the primary sources that I've noted in each
+section.
 
 The first section will be based on notes compiled from Python Testing with
 pytest written by Brian Okken. Depending on how this goes there may be more 
 sections to come.
 
-## Why?
+## 1.2. Why?
 I need more practice with python testing and I hope others can benefit from my
 notes.
 
-### Notes - Python Testing with pytest (author: Brian Okken)
+### 1.2.1. Notes - Python Testing with pytest (author: Brian Okken)
 
-#### Chapter 1 - Getting Started with `pytest`
+#### 1.2.1.1. Chapter 1 - Getting Started with `pytest`
 1. Simple passing test
 
 `$ pytest -v tests/ch1/test_one.py`
@@ -64,7 +82,7 @@ notes.
 
 `$ pytest --duration=N`
 
-#### Chapter 2 - Using `assert` Statements
+#### 1.2.1.2. Chapter 2 - Using `assert` Statements
 
 1. Install the tasks package
 
@@ -192,7 +210,7 @@ e.g.
 class TestAdd():
     ...
 ```
-#### Chapter 3 - pytest fixtures
+#### 1.2.1.3. Chapter 3 - pytest fixtures
 1. Simple fixture example
 
 `$ pytest -v tests/ch3/test_fixtures.py::test_some_data`
@@ -326,7 +344,7 @@ def tasks_db_session(tmpdir_factory, request):
     ...
 ```
 
-#### Chapter 4 - Builtin Fixtures
+#### 1.2.1.4. Chapter 4 - Builtin Fixtures
 
 1. Using the `tmpdir` builtin fixture
 
@@ -495,7 +513,7 @@ def test_lame_function_2():
     assert str(w.message) == 'Please stop using this'
 ```
 
-#### Chapter 5 - Plugins
+#### 1.2.1.5. Chapter 5 - Plugins
 
 - Documentation for pytest plugins:
   - https://docs.pytest.org/en/latest/plugins.html
@@ -503,7 +521,7 @@ def test_lame_function_2():
   - https://github.com/pytest-dev
 
 
-### Installation
+### 1.2.2. Installation
 ```
 $ pip3 install -U virtualenv
 $ python3 -m virtualenv venv
@@ -514,20 +532,20 @@ $ pip install -e .
 ```
 ... Follow tests notes above
 
-### Testing
+### 1.2.3. Testing
 ```
 $ python setup.py test
 ```
 
-## Requirements
+## 1.3. Requirements
 - pytest
 
-## Future Improvements
+## 1.4. Future Improvements
 - TBD
 
-## Licence
+## 1.5. Licence
 MIT
 
-## Authors
+## 1.6. Authors
 `python_unittest_examples` was written by `Greg Horie <networkserf@gmail.com>`
 
