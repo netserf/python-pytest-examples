@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/netserf/python-pytest-examples.svg?branch=master)](https://travis-ci.org/netserf/python-pytest-examples)
 
-!-- TOC -->
+<!-- TOC -->
 [1. Python `pytest` Examples](#1-python-pytest-examples)
 - [1.1. What?](#11-what)
 - [1.2. Why?](#12-why)
